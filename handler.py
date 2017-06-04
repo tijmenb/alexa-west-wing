@@ -4,7 +4,7 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
     return {
         'outputSpeech': {
             'type': 'SSML',
-            'text': output
+            'ssml': '<speak>' + output + '</speak>'
         },
         'card': {
             'type': 'Simple',
@@ -105,7 +105,7 @@ def on_intent(intent_request, session):
     elif intent_name == "FargoZipcodeIntent":
         return reply('<say-as interpret-as="spell-out">50504</say-as>')
     elif intent_name == "WhyDidYouTellIntent":
-        return reply("<speak>because <emphasis level='strong'>all</emphasis> wars are crimes</speak>")
+        return reply("because <emphasis level='strong'>all</emphasis> wars are crimes")
     elif intent_name == "OkIntent":
         return reply("what's next?")
     elif intent_name == "AMAZON.HelpIntent":
